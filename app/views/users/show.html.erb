@@ -2,15 +2,35 @@
 
 <p>
   <b>Photo:</b>
-  <%= @user.photo %>
+  <%= image_tag(@user.photo) %>
 </p>
 
 <p>
   <b>Name:</b>
   <%= @user.name %>
 </p>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
 
-</h2>post</h2>
+	<h2>add post </h2>
+	<p>
+	<%= form_for([@user, @user.posts.build]) do |f|%>
+	<div class="field">
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+	</div>
+	<div class="field">
+	<%= f.label :description %>
+	<%= f.text_area :description, :rows => 5%>
+	</div>
+	<div class="action">
+	<%= f.submit%>
+	</div>
+	<% end %>
+	</p>
+
+<h2>post</h2>
+	<div class="show">
 	<%= @user.posts.each do |post| %>
 	<p>
 	<%= post.title %>
@@ -19,21 +39,4 @@
 	<%= post.description%>
 	</p>
 	<% end %>
-	<h2>add post</h2>
-	<p>
-	<%= form_for([@user, @user.posts.build]) do |f|%>
-	<div class="field">
-	<%= f.label :title %>
-	<%= f.text_field :title %>
 	</div>
-	<div class ="field">
-	<%= f.label :description %>
-	<%= f.text_area :description %>
-	</div>
-	<div class="action">
-	<%= f.submit%>
-	</div>
-	<% end %>
-	</p>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
