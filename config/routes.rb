@@ -1,5 +1,7 @@
 Posting::Application.routes.draw do
-  resources :users
+  resources :users do
+	resources :posts
+end
 
 
   get "home/index"
