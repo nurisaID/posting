@@ -31,37 +31,15 @@
 
 <h2>post</h2>
 	<div class="show">
-	<%= @user.posts.each do |post| %>
+	<% @user.posts.each do |post| %>
 	<p>
 	<%= post.title %>
 	</p>
 	<p>
 	<%= post.description%>
 	</p>
+	<p>
+	<%= link_to 'Delete Post', [post.user, post], :confirm => 'are you sure?', :method => :delete%>
+	</p>
 	<% end %>
 	</div>
-<h2>Comments</h2>
-	<%= @post.comments.each do |comment| %>
-	<p>
-	<b>Name :</b>
-	<%= comment.name%>
-	</p>
-	<p>
-	<b>Comment :</b>
-	<%= comment.your_comment%>
-	</p>
-	<% end%>
-<h2>Add Comment :</h2>
-	<%= form_for([@post, @post.comments.build]) do |f|%>
-	<div class="field">
-	<%= f.label :name %>
-	<%= f.text_field :name%>
-	</div>
-	<div class ="field">
-	<%= f.label :your_comment %>
-	<%= f.text_area :your_comment %>
-	</div>
-	<div class ="action">
-	<%= f.submit %>
-	</div>
-	<% end %>

@@ -1,6 +1,9 @@
 Posting::Application.routes.draw do
-  resources :users do
-	resources :posts, :comments
+
+ resources :users do
+   resources :posts do
+    resources :comments
+  end
 end
 
 
