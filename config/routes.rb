@@ -1,6 +1,6 @@
 Posting::Application.routes.draw do
   resources :users do
-	resources :posts
+	resources :posts, :comments
 end
 
 

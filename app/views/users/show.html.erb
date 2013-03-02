@@ -40,3 +40,28 @@
 	</p>
 	<% end %>
 	</div>
+<h2>Comments</h2>
+	<%= @post.comments.each do |comment| %>
+	<p>
+	<b>Name :</b>
+	<%= comment.name%>
+	</p>
+	<p>
+	<b>Comment :</b>
+	<%= comment.your_comment%>
+	</p>
+	<% end%>
+<h2>Add Comment :</h2>
+	<%= form_for([@post, @post.comments.build]) do |f|%>
+	<div class="field">
+	<%= f.label :name %>
+	<%= f.text_field :name%>
+	</div>
+	<div class ="field">
+	<%= f.label :your_comment %>
+	<%= f.text_area :your_comment %>
+	</div>
+	<div class ="action">
+	<%= f.submit %>
+	</div>
+	<% end %>
